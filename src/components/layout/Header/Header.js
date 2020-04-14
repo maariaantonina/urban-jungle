@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
@@ -8,10 +9,28 @@ import clsx from 'clsx';
 
 import styles from './Header.module.scss';
 
-const Component = ({className, children}) => (
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+
+const Component = ({ className }) => (
   <div className={clsx(className, styles.root)}>
-    <h2>Header</h2>
-    {children}
+    <Grid
+      container
+      spacing={0}
+      alignItems="center"
+      className={styles.container}
+    >
+      <Grid item xs></Grid>
+      <Grid item container justify="center" xs={6}>
+        <Link variant="h6" component={RouterLink} to="/" underline="none">
+          Urban Jungle
+        </Link>
+      </Grid>
+      <Grid item container justify="flex-end" xs alignItems="flex-end">
+        <Button>Cart</Button>
+      </Grid>
+    </Grid>
   </div>
 );
 
