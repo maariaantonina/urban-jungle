@@ -24,7 +24,7 @@ const theme = createMuiTheme({
   },
   typography: {
     fontSize: 16,
-    fontFamily: ['Poppins', 'Arial', 'sans-serif'].join(','),
+    fontFamily: ['Inter', 'Arial', 'sans-serif'].join(','),
     h6: {
       fontWeight: 700,
       textTransform: 'uppercase',
