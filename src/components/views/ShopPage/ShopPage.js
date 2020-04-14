@@ -17,18 +17,18 @@ import { CategoriesNav } from '../../layout/CategoriesNav/CategoriesNav';
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
-    <CategoriesNav container spacing={0} className={styles.container}>
+    <Grid container spacing={0} className={styles.container}>
       <Grid item xs={12} md={9}>
         <ProductsList></ProductsList>
       </Grid>
       <Hidden smDown>
-        <CategoriesNav item md>
+        <Grid item md>
           <Box className={styles.sideNav}>
             <CategoriesNav></CategoriesNav>
           </Box>
-        </CategoriesNav>
+        </Grid>
       </Hidden>
-    </CategoriesNav>
+    </Grid>
   </div>
 );
 
