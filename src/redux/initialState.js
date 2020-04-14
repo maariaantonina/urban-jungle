@@ -9,4 +9,5 @@ export const initialState = {
   cart: {
     products: [],
   },
+  categories: ['succulents', 'cacti', 'flowering', 'palms'],
 };

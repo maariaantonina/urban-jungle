@@ -13,6 +13,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
+import { PageNav } from '../PageNav/PageNav';
+
 const Component = ({ className, cartItems }) => (
   <div className={clsx(className, styles.root)}>
     <Grid
@@ -21,7 +23,9 @@ const Component = ({ className, cartItems }) => (
       alignItems="center"
       className={styles.container}
     >
-      <Grid item xs></Grid>
+      <Grid item xs>
+        <PageNav></PageNav>
+      </Grid>
       <Grid item container justify="center" xs={6}>
         <Link variant="h6" component={RouterLink} to="/" underline="none">
           Urban Jungle
