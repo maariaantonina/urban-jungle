@@ -17,7 +17,7 @@ import { CategoriesNav } from '../../layout/CategoriesNav/CategoriesNav';
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
-    <Grid container spacing={0} className={styles.container}>
+    <Grid container spacing={5} className={styles.container}>
       <Grid item xs={12} md={9}>
         <ProductsList></ProductsList>
       </Grid>

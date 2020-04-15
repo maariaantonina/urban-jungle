@@ -16,7 +16,6 @@ import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { CategoriesNav } from '../CategoriesNav/CategoriesNav';
 
 const Component = ({ className, children }) => {
   //is the drawer open?
@@ -42,7 +41,34 @@ const Component = ({ className, children }) => {
       </Button>
       <Drawer anchor="left" open={state} onClose={toggleDrawer(false)}>
         <div className={styles.drawer}>
-          <CategoriesNav></CategoriesNav>
+          <List
+            component="nav"
+            aria-labelledby="nested-list-subheader"
+            subheader={
+              <ListSubheader
+                component="div"
+                id="nested-list-subheader"
+                className={styles.listSubheader}
+              >
+                SHOP
+              </ListSubheader>
+            }
+          >
+            {['succulents', 'cacti', 'flowering', 'palms'].map((text) => (
+              <ListItem
+                button
+                key={text}
+                className={styles.listItem}
+                component={NavLink}
+                to={`/collections/${text}`}
+              >
+                <ListItemText
+                  primary={text}
+                  classes={{ primary: styles.listItemText }}
+                />
+              </ListItem>
+            ))}
+          </List>
           <List
             component="nav"
             aria-labelledby="nested-list-subheader"

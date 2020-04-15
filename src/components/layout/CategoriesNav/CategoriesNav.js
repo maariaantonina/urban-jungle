@@ -36,6 +36,7 @@ const Component = ({ className, children }) => (
           className={styles.listItem}
           component={NavLink}
           to={`/collections/${text}`}
+          activeClassName={styles.active}
         >
           <ListItemText
             primary={text}
