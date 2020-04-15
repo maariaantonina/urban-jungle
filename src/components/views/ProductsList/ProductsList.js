@@ -9,33 +9,25 @@ import { getAll } from '../../../redux/productsRedux.js';
 import styles from './ProductsList.module.scss';
 
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
 
-const Component = ({ className, children, products }) => (
+import { ProductBox } from '../../features/ProductBox/ProductBox.js';
+
+const Component = ({ className, children, products, category }) => (
   <div className={clsx(className, styles.root)}>
     <Grid container spacing={4}>
-      {products.map((product) => (
-        <Grid item xs={12} md={4} key={product.id}>
-          <Card square elevation={0}>
-            <CardActionArea>
-              <CardMedia
-                className={styles.image}
-                image={product.photo}
-                title={product.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {product.name}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-      ))}
+      {category === 'all'
+        ? products.map((product) => (
+            <Grid item xs={12} md={4} key={product._id}>
+              <ProductBox {...product}></ProductBox>
+            </Grid>
+          ))
+        : products
+            .filter((product) => product.category === category)
+            .map((product) => (
+              <Grid item xs={12} md={4} key={product._id}>
+                <ProductBox {...product}></ProductBox>
+              </Grid>
+            ))}
     </Grid>
   </div>
 );
@@ -44,6 +36,7 @@ Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   products: PropTypes.array,
+  category: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
