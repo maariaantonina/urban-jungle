@@ -20,8 +20,8 @@ import { CategoriesNav } from '../../layout/CategoriesNav/CategoriesNav';
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
     <Grid container className={styles.container}>
-      <Grid item xs={12} md={9}>
-        <div className={styles.splash}>
+      <Grid container item xs={12} md={9} justify="center">
+        <Grid item xs={12} md={9} className={styles.splash}>
           <Link component={Routerlink} to="/collections/all">
             <img
               src="https://images.unsplash.com/photo-1545241047-6083a3684587?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80"
@@ -42,7 +42,7 @@ const Component = ({ className, children }) => (
               shop now
             </Link>
           </div>
-        </div>
+        </Grid>
       </Grid>
       <Hidden smDown>
         <Grid item md>
