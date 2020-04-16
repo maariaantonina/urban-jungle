@@ -29,21 +29,23 @@ const Component = ({ className, children }) => (
         </ListSubheader>
       }
     >
-      {['succulents', 'cacti', 'flowering', 'palms'].map((text) => (
-        <ListItem
-          button
-          key={text}
-          className={styles.listItem}
-          component={NavLink}
-          to={`/collections/${text}`}
-          activeClassName={styles.active}
-        >
-          <ListItemText
-            primary={text}
-            classes={{ primary: styles.listItemText }}
-          />
-        </ListItem>
-      ))}
+      {['all', 'succulents', 'cacti', 'flowering', 'palms', 'tillandisia'].map(
+        (text) => (
+          <ListItem
+            button
+            key={text}
+            className={styles.listItem}
+            component={NavLink}
+            to={`/collections/${text}`}
+            activeClassName={styles.active}
+          >
+            <ListItemText
+              primary={text}
+              classes={{ primary: styles.listItemText }}
+            />
+          </ListItem>
+        )
+      )}
     </List>
   </div>
 );

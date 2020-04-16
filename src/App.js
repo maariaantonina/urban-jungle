@@ -25,6 +25,9 @@ const theme = createMuiTheme({
   typography: {
     fontSize: 16,
     fontFamily: ['Inter', 'Arial', 'sans-serif'].join(','),
+    h3: {
+      fontWeight: 700,
+    },
     h6: {
       fontWeight: 700,
       textTransform: 'uppercase',
@@ -40,6 +43,11 @@ const theme = createMuiTheme({
     },
     subtitle1: {
       fontWeight: 700,
+    },
+    subtitle2: {
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      fontSize: '1REM',
     },
   },
 });

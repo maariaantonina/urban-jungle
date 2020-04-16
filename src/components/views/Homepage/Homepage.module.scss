@@ -1,4 +1,29 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  margin: 40px;
+  display: flex;
+  margin-top: 60px;
+}
+
+.splash {
+  position: relative;
+  left: 115px;
+  height: 550px;
+
+  a {
+    display: block;
+  }
+
+  img {
+    width: 75%;
+    height: 550px;
+    object-fit: cover;
+  }
+}
+
+.header {
+  position: absolute;
+  top: 40%;
+  left: -115px;
+}

@@ -54,7 +54,14 @@ const Component = ({ className, children }) => {
               </ListSubheader>
             }
           >
-            {['succulents', 'cacti', 'flowering', 'palms'].map((text) => (
+            {[
+              'all',
+              'succulents',
+              'cacti',
+              'flowering',
+              'palms',
+              'tillandisia',
+            ].map((text) => (
               <ListItem
                 button
                 key={text}
