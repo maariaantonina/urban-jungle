@@ -30,7 +30,7 @@ const Component = ({ className, children }) => (
           </Link>
           <div className={styles.header}>
             <Typography variant="h3" gutterBottom={true}>
-              Free shipping
+              Free shipping worldwide
             </Typography>
             <Link
               component={Routerlink}

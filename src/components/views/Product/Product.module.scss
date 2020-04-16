@@ -1,4 +1,43 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  margin: 40px;
+  display: flex;
+  margin-top: 60px;
+}
+
+.container {
+  min-height: 70vh;
+}
+
+.sideNav {
+  height: 100%;
+  text-transform: none;
+}
+
+.photo {
+  position: relative;
+
+  a {
+    display: block;
+  }
+
+  img {
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+  }
+}
+
+.header {
+  position: absolute;
+  top: 40%;
+  left: -115px;
+  width: 250px;
+}
+
+@media (max-width: 960px) {
+  .header {
+    position: static;
+  }
+}

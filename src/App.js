@@ -27,6 +27,7 @@ const theme = createMuiTheme({
     fontFamily: ['Inter', 'Arial', 'sans-serif'].join(','),
     h3: {
       fontWeight: 700,
+      lineHeight: 1.25,
     },
     h6: {
       fontWeight: 700,
