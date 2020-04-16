@@ -8,12 +8,28 @@ import clsx from 'clsx';
 
 import styles from './MainLayout.module.scss';
 
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import Box from '@material-ui/core/Box';
+
 import { Header } from '../Header/Header';
+import { CategoriesNav } from '../../layout/CategoriesNav/CategoriesNav';
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
     <Header></Header>
-    {children}
+    <Grid container className={styles.container} spacing={5}>
+      <Grid item xs={12} md={9}>
+        {children}
+      </Grid>
+      <Hidden smDown>
+        <Grid item md>
+          <Box className={styles.sideNav}>
+            <CategoriesNav></CategoriesNav>
+          </Box>
+        </Grid>
+      </Hidden>
+    </Grid>
   </div>
 );
 

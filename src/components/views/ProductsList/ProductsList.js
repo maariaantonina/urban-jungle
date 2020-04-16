@@ -12,17 +12,17 @@ import Grid from '@material-ui/core/Grid';
 
 import { ProductBox } from '../../features/ProductBox/ProductBox.js';
 
-const Component = ({ className, children, products, category }) => (
+const Component = ({ className, children, products, match }) => (
   <div className={clsx(className, styles.root)}>
-    <Grid container spacing={4}>
-      {category === 'all'
+    <Grid container spacing={5}>
+      {match.params.name === 'all'
         ? products.map((product) => (
             <Grid item xs={12} md={4} key={product._id}>
               <ProductBox {...product}></ProductBox>
             </Grid>
           ))
         : products
-            .filter((product) => product.category === category)
+            .filter((product) => product.category === match.params.name)
             .map((product) => (
               <Grid item xs={12} md={4} key={product._id}>
                 <ProductBox {...product}></ProductBox>
@@ -36,7 +36,7 @@ Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   products: PropTypes.array,
-  category: PropTypes.string,
+  match: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
