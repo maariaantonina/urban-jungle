@@ -14,6 +14,7 @@ import Box from '@material-ui/core/Box';
 
 import { Header } from '../Header/Header';
 import { CategoriesNav } from '../../layout/CategoriesNav/CategoriesNav';
+import { Footer } from '../../layout/Footer/Footer';
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
@@ -21,6 +22,7 @@ const Component = ({ className, children }) => (
     <Grid container className={styles.container} spacing={5}>
       <Grid item xs={12} md={9}>
         {children}
+        <Footer></Footer>
       </Grid>
       <Hidden smDown>
         <Grid item md>
