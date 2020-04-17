@@ -10,10 +10,14 @@ const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 
+const ADD_PRODUCT = createActionName('ADD_PRODUCT');
+
 /* action creators */
 export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
 export const fetchSuccess = (payload) => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = (payload) => ({ payload, type: FETCH_ERROR });
+
+export const addProduct = (payload) => ({ payload, type: ADD_PRODUCT });
 
 /* thunk creators */
 
@@ -48,6 +52,32 @@ export const reducer = (statePart = [], action = {}) => {
         },
       };
     }
+    case ADD_PRODUCT:
+      if (
+        statePart.products.filter(
+          (product) => product._id === action.payload._id
+        ).length > 0
+      ) {
+        return {
+          ...statePart,
+          products: statePart.products.map((product) => {
+            if (product._id === action.payload._id) {
+              return {
+                ...product,
+                amount: product.amount + action.payload.amount,
+              };
+            } else {
+              return product;
+            }
+          }),
+        };
+      } else {
+        return {
+          ...statePart,
+          products: [...statePart.products, action.payload],
+        };
+      }
+
     default:
       return statePart;
   }

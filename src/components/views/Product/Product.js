@@ -5,6 +5,7 @@ import clsx from 'clsx';
 
 import { connect } from 'react-redux';
 import { getById } from '../../../redux/productsRedux.js';
+import { addProduct } from '../../../redux/cartRedux.js';
 
 import styles from './Product.module.scss';
 
@@ -25,8 +26,12 @@ const Component = ({
   price,
   description,
   height,
+  _id,
+  addProductToCart,
 }) => {
   const [amount, setAmount] = React.useState(1);
+  const addToCart = (id, amount) =>
+    addProductToCart({ _id: id, amount: amount });
   return (
     <div className={clsx(className, styles.root)}>
       <Grid container justify="flex-end" spacing={6}>
@@ -88,7 +93,7 @@ const Component = ({
                 </IconButton>
               </div>
             </div>
-            <Button>Add to cart</Button>
+            <Button onClick={() => addToCart(_id, amount)}>Add to cart</Button>
           </div>
         </Grid>
       </Grid>
@@ -101,9 +106,11 @@ Component.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
+  _id: PropTypes.string,
   photos: PropTypes.array,
   price: PropTypes.number,
   height: PropTypes.number,
+  addProductToCart: PropTypes.func,
 };
 
 const mapStateToProps = (state, props) => {
@@ -113,11 +120,11 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  addProductToCart: (arg) => dispatch(addProduct(arg)),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   //Component as Product,
