@@ -37,6 +37,8 @@ const theme = createMuiTheme({
     },
     body1: {
       fontFamily: ['Noto Serif', 'serif'].join(','),
+      fontSize: '0.875REM',
+      lineHeight: 2,
     },
     body2: {
       fontFamily: ['Inter', 'sans-serif'].join(','),
