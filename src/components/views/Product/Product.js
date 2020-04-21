@@ -30,18 +30,19 @@ const Component = ({
   addProductToCart,
 }) => {
   const [amount, setAmount] = React.useState(1);
-  const addToCart = (id, amount) =>
-    addProductToCart({ _id: id, amount: amount });
+  const addToCart = (amount) =>
+    addProductToCart({
+      _id: _id,
+      amount: amount,
+      name: name,
+      photos: photos,
+      price: price,
+    });
   return (
     <div className={clsx(className, styles.root)}>
       <Grid container justify="flex-end" spacing={6}>
         <Grid item xs={12} md={5} className={styles.photo}>
           <img src={photos[0]} alt={name}></img>
-          <div className={styles.header}>
-            <Typography variant="h3" gutterBottom={true}>
-              {name}
-            </Typography>
-          </div>
           <GridList cellHeight={140} className={styles.gridList} cols={3}>
             {photos.map((tile) => (
               <GridListTile key={tile} cols={1}>
@@ -49,6 +50,11 @@ const Component = ({
               </GridListTile>
             ))}
           </GridList>
+          <div className={styles.header}>
+            <Typography variant="h3" gutterBottom={true}>
+              {name}
+            </Typography>
+          </div>
         </Grid>
         <Grid item xs={12} md={6}>
           <div className={styles.description}>
@@ -93,7 +99,7 @@ const Component = ({
                 </IconButton>
               </div>
             </div>
-            <Button onClick={() => addToCart(_id, amount)}>Add to cart</Button>
+            <Button onClick={() => addToCart(amount)}>Add to cart</Button>
           </div>
         </Grid>
       </Grid>

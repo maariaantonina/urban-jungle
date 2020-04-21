@@ -1,5 +1,6 @@
 /* selectors */
 export const countItems = ({ cart }) => cart.products.length;
+export const allProducts = ({ cart }) => cart.products;
 
 /* action name creator */
 const reducerName = 'cart';
@@ -11,6 +12,9 @@ const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 
 const ADD_PRODUCT = createActionName('ADD_PRODUCT');
+const REMOVE_ONE = createActionName('REMOVE_ONE');
+const ADD_ONE = createActionName('ADD_ONE');
+const REMOVE = createActionName('REMOVE');
 
 /* action creators */
 export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
@@ -18,6 +22,9 @@ export const fetchSuccess = (payload) => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = (payload) => ({ payload, type: FETCH_ERROR });
 
 export const addProduct = (payload) => ({ payload, type: ADD_PRODUCT });
+export const removeOne = (payload) => ({ payload, type: REMOVE_ONE });
+export const addOne = (payload) => ({ payload, type: ADD_ONE });
+export const remove = (payload) => ({ payload, type: REMOVE });
 
 /* thunk creators */
 
@@ -77,7 +84,41 @@ export const reducer = (statePart = [], action = {}) => {
           products: [...statePart.products, action.payload],
         };
       }
-
+    case REMOVE_ONE:
+      return {
+        ...statePart,
+        products: statePart.products.map((product) => {
+          if (product._id === action.payload) {
+            return {
+              ...product,
+              amount: product.amount - 1,
+            };
+          } else {
+            return product;
+          }
+        }),
+      };
+    case ADD_ONE:
+      return {
+        ...statePart,
+        products: statePart.products.map((product) => {
+          if (product._id === action.payload) {
+            return {
+              ...product,
+              amount: product.amount + 1,
+            };
+          } else {
+            return product;
+          }
+        }),
+      };
+    case REMOVE:
+      return {
+        ...statePart,
+        products: statePart.products.filter(
+          (product) => product._id !== action.payload
+        ),
+      };
     default:
       return statePart;
   }

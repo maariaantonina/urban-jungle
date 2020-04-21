@@ -20,12 +20,12 @@ const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
     <Header></Header>
     <Grid container className={styles.container} spacing={5}>
-      <Grid item xs={12} md={9}>
+      <Grid item xs={12} lg={9}>
         {children}
         <Footer></Footer>
       </Grid>
-      <Hidden smDown>
-        <Grid item md>
+      <Hidden mdDown>
+        <Grid item lg>
           <Box className={styles.sideNav}>
             <CategoriesNav></CategoriesNav>
           </Box>
