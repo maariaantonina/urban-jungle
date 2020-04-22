@@ -15,6 +15,7 @@ const ADD_PRODUCT = createActionName('ADD_PRODUCT');
 const REMOVE_ONE = createActionName('REMOVE_ONE');
 const ADD_ONE = createActionName('ADD_ONE');
 const REMOVE = createActionName('REMOVE');
+const ADD_INSTRUCTION = createActionName('ADD_INSTRUCTION');
 
 /* action creators */
 export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
@@ -25,6 +26,7 @@ export const addProduct = (payload) => ({ payload, type: ADD_PRODUCT });
 export const removeOne = (payload) => ({ payload, type: REMOVE_ONE });
 export const addOne = (payload) => ({ payload, type: ADD_ONE });
 export const remove = (payload) => ({ payload, type: REMOVE });
+export const addInstruction = (payload) => ({ payload, type: ADD_INSTRUCTION });
 
 /* thunk creators */
 
@@ -118,6 +120,11 @@ export const reducer = (statePart = [], action = {}) => {
         products: statePart.products.filter(
           (product) => product._id !== action.payload
         ),
+      };
+    case ADD_INSTRUCTION:
+      return {
+        ...statePart,
+        instruction: action.payload,
       };
     default:
       return statePart;

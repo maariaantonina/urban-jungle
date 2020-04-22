@@ -12,6 +12,7 @@ import { CssBaseline } from '@material-ui/core';
 import { store } from './redux/store';
 
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
+import { CartPage } from './components/views/CartPage/CartPage';
 import { Homepage } from './components/views/Homepage/Homepage';
 import { ProductsList } from './components/views/ProductsList/ProductsList';
 import { Product } from './components/views/Product/Product';
@@ -28,6 +29,9 @@ const theme = createMuiTheme({
     h3: {
       fontWeight: 700,
       lineHeight: 1.25,
+    },
+    h4: {
+      fontWeight: 700,
     },
     h6: {
       fontWeight: 700,
@@ -70,6 +74,7 @@ const App = () => (
                 path="/collections/products/:id"
                 component={Product}
               />
+              <Route exact path="/cart" component={CartPage} />
               <Route path="*" component={NotFound} />
             </Switch>
           </MainLayout>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
@@ -94,7 +95,9 @@ const Component = ({
             PLN {subtotal()}
           </Typography>
         </div>
-        <Button>VIEW CART</Button>
+        <Button component={Link} to="/cart">
+          VIEW CART
+        </Button>
         <Button color="secondary" variant="outlined">
           Check out
         </Button>

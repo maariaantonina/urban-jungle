@@ -104,7 +104,30 @@ export const initialState = {
     },
   },
   cart: {
-    products: [],
+    products: [
+      {
+        _id: '2',
+        amount: 1,
+        name: 'Fancy plant',
+        photos: [
+          'https://source.unsplash.com/collection/404339/4',
+          'https://source.unsplash.com/collection/404339/5',
+          'https://source.unsplash.com/collection/404339/6',
+        ],
+        price: 10,
+      },
+      {
+        _id: '1',
+        amount: 1,
+        name: 'Fancy plant',
+        photos: [
+          'https://source.unsplash.com/collection/404339/1',
+          'https://source.unsplash.com/collection/404339/2',
+          'https://source.unsplash.com/collection/404339/3',
+        ],
+        price: 10,
+      },
+    ],
   },
   categories: [
     'all',
