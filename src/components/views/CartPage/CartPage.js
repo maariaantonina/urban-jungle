@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
@@ -128,7 +129,12 @@ const Component = ({
         <div className={styles.info}>
           <Typography variant="h4">Subtotal: PLN {subtotal()}</Typography>
           <Typography>Shipping and taxes calculated at checkout</Typography>
-          <Button color="secondary" variant="outlined">
+          <Button
+            color="secondary"
+            variant="outlined"
+            component={Link}
+            to="/order"
+          >
             Check out
           </Button>
         </div>

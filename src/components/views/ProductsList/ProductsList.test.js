@@ -3,8 +3,12 @@ import { shallow } from 'enzyme';
 import { ProductsListComponent } from './ProductsList';
 
 const mockProps = {
-  products: ['1', '2'],
-  match: { params: { id: 'as' } },
+  products: [
+    { name: 'a', photos: ['a', 'b'], category: 'name' },
+    { name: 'b', photos: ['a', 'b'], category: 'name' },
+  ],
+  match: { params: { name: 'as' } },
+  fetchProducts: jest.fn(),
 };
 
 describe('Component ProductsList', () => {

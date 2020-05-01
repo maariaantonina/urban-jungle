@@ -98,7 +98,12 @@ const Component = ({
         <Button component={Link} to="/cart">
           VIEW CART
         </Button>
-        <Button color="secondary" variant="outlined">
+        <Button
+          color="secondary"
+          variant="outlined"
+          component={Link}
+          to="/order"
+        >
           Check out
         </Button>
       </div>

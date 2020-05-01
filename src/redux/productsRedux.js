@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 /* selectors */
 export const getAll = ({ products }) => products.data;
 export const getById = ({ products }, id) => {
@@ -20,6 +22,22 @@ export const fetchSuccess = (payload) => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = (payload) => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
+
+export const fetchProducts = () => {
+  return (dispatch, getState) => {
+    try {
+      const { products } = getState();
+      if (!products.data.length || products.loading.active === false) {
+        dispatch(fetchStarted());
+        axios.get('http://localhost:8000/api/products').then((res) => {
+          dispatch(fetchSuccess(res.data));
+        });
+      }
+    } catch (err) {
+      dispatch(fetchError(err.message || true));
+    }
+  };
+};
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {

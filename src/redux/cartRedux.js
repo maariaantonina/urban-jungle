@@ -16,6 +16,7 @@ const REMOVE_ONE = createActionName('REMOVE_ONE');
 const ADD_ONE = createActionName('ADD_ONE');
 const REMOVE = createActionName('REMOVE');
 const ADD_INSTRUCTION = createActionName('ADD_INSTRUCTION');
+const ADD_DISCOUNT_CODE = createActionName('ADD_DISCOUNT_CODE');
 
 /* action creators */
 export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
@@ -27,6 +28,10 @@ export const removeOne = (payload) => ({ payload, type: REMOVE_ONE });
 export const addOne = (payload) => ({ payload, type: ADD_ONE });
 export const remove = (payload) => ({ payload, type: REMOVE });
 export const addInstruction = (payload) => ({ payload, type: ADD_INSTRUCTION });
+export const addDiscountCode = (payload) => ({
+  payload,
+  type: ADD_DISCOUNT_CODE,
+});
 
 /* thunk creators */
 
@@ -125,6 +130,11 @@ export const reducer = (statePart = [], action = {}) => {
       return {
         ...statePart,
         instruction: action.payload,
+      };
+    case ADD_DISCOUNT_CODE:
+      return {
+        ...statePart,
+        discountCode: action.payload,
       };
     default:
       return statePart;

@@ -1,0 +1,41 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  width: 560px;
+  margin: 0 auto;
+}
+
+.photo {
+  display: flex;
+  align-items: center;
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
+.name {
+  margin-left: 50px;
+}
+
+.discountCode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px auto;
+
+  & > *:first-child {
+    width: 75%;
+  }
+}
+
+.clientData {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  & > * {
+    min-width: 45%;
+  }
+}
