@@ -15,11 +15,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname + '../public')));
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/urban-jungle', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+process.env.NODE_ENV === 'production'
+  ? mongoose.connect(
+      'mongodb+srv://maria:bobek2@cluster0-o1j4s.mongodb.net/urban-jungle?retryWrites=true&w=majority',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
+  : mongoose.connect('mongodb://localhost:27017/urban-jungle', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
 const db = mongoose.connection;
+
 db.once('open', () => {
   console.log('Successfully connected to the database');
 });
